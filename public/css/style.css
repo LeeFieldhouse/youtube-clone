@@ -1,0 +1,114 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    width: 100%;
+}
+
+/* start top nav */
+.top-nav{
+    position: fixed;
+    height: 5.6rem;
+    width: 100%;
+    padding: 0 1.6rem;
+    padding-right: 3.2rem;
+    background-color: #fff;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2.4rem;
+    color: #787878;
+    box-sizing: border-box;
+}
+
+/* left side top nav */
+.top-nav-left-side{
+    height: 100%;
+    width: 20rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+
+}
+.top-nav-menu {
+    padding: 0 1rem;
+    margin-right: 1.6rem;
+}
+
+.top-nav-logo {
+    width: 8rem;
+
+}
+
+/* end left side top nav */
+
+/* start top nav search  */
+.top-nav-search-container{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-nav-search-container input {
+    height: 2.6rem;
+    width: 70%;
+    padding: 0.2rem 0.6rem;
+    color: #111111;
+    font-size: 1.6rem;
+    border-top: 0.1rem solid #D2D2D2 ;
+    border-bottom: 0.1rem solid #D2D2D2 ;
+    border-left: 0.1rem solid #D2D2D2 ;
+    border-right: none;
+    /* box-shadow: rgb(238, 238, 238) 0px 1px 1px 0px inset; */
+    border-radius: 2px 0px 0px 2px;
+}
+.top-nav-search-container input::placeholder {
+    color: #878787;
+}
+.top-nav-search-container button {
+    height: 3.2rem;
+    padding: 0.1rem 0.6rem;
+}
+/* end top nav search */
+
+/* start right side top nav */
+.top-nav-right-side{
+    height: 100%;
+    width: 20rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.top-nav-right-icon{
+    padding: 0 1rem;
+}
+
+.top-nav-avatar{
+    height: 3.2rem;
+    width: 3.2rem;
+    border-radius: 100%;
+    margin-right: 0;
+    padding: 0 1rem;
+}
+/* end right side top nav */
+
+/* end top nav */
+/* push everything below top nav */
+.main-content {
+    margin-top: 5.6rem;
+}
+/* end push everything below top nav */
+
+/* start side nav */
