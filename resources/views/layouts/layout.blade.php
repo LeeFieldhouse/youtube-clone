@@ -18,11 +18,12 @@
     <body>
         @include('layouts.navbar')
         @include('layouts.sidebar')
-        <div class="main-content">
 
+            <div class="wrapper">
+                @include('layouts.uploadform')
+                @yield('content')
+            </div>
 
-        @yield('content')
-    </div>
 
         <script
   src="https://code.jquery.com/jquery-3.4.0.js"

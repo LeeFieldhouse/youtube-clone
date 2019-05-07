@@ -17,6 +17,7 @@ body {
     width: 85%;
     height: 100%;
     margin: 0 auto;
+    margin-top: 5.6rem;
     padding-top: 2rem;
     box-sizing: border-box;
 }
@@ -147,11 +148,8 @@ body {
 /* end right side top nav */
 
 /* end top nav */
-/* push everything below top nav */
-.main-content {
-    margin-top: 5.6rem;
-}
-/* end push everything below top nav */
+
+/* start side bar */
 .sidebar {
     position: fixed;
     width: 22.4rem;
@@ -269,3 +267,15 @@ body {
     font-size: 1.3rem;
 }
 /* end video card */
+
+
+/* start upload form */
+.upload-form {
+    width: 80%;
+    height: 80%;
+    background-color: red;
+    margin: 0 auto;
+    position: fixed;
+    align-self: center;
+}
+/* end upload form */
