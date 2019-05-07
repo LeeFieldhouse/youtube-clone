@@ -136,7 +136,9 @@ body {
 
 .top-nav-right-icon{
     padding: 0 1rem;
+    cursor: pointer;
 }
+
 
 .top-nav-avatar{
     height: 3.2rem;
@@ -270,12 +272,19 @@ body {
 
 
 /* start upload form */
-.upload-form {
-    width: 80%;
-    height: 80%;
+.upload-section {
+    width: 50%;
+    height: 20rem;
+    margin-top: 10rem;
     background-color: red;
-    margin: 0 auto;
     position: fixed;
-    align-self: center;
+    right: 0;
+    left: 0;
+    margin: 10rem auto;
+    display: none;
+}
+
+.upload-form {
+
 }
 /* end upload form */

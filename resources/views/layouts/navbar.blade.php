@@ -8,7 +8,7 @@
         <button type="submit"><i class="fas fa-search "></i></button>
     </form>
     <div class="top-nav-right-side">
-        <i class="fas fa-camera top-nav-right-icon"></i>
+        <i class="fas fa-camera top-nav-right-icon" id="upload-icon-btn"></i>
         <i class="fas fa-bell top-nav-right-icon"></i>
         <img src="{{asset('img/default_avatar.png')}}" alt="" class="top-nav-avatar">
     </div>

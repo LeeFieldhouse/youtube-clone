@@ -20,7 +20,9 @@
         @include('layouts.sidebar')
 
             <div class="wrapper">
+                @auth
                 @include('layouts.uploadform')
+                @endauth
                 @yield('content')
             </div>
 
@@ -38,8 +40,12 @@
         })
         // end toggle side nav
 
+        // start toggle upload section
+        $('#upload-icon-btn').click(() => {
+            $('#upload-section').fadeToggle(500);
+        });
+        //
       });
-
   </script>
         @yield('script')
 
