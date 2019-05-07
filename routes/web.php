@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'PageController@index')->name('index');
-
+Route::resource('video', 'VideoController');
 Auth::routes();
 
 
