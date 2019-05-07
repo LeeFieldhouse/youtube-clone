@@ -17,10 +17,12 @@
     </head>
     <body>
         @include('layouts.navbar')
-        <div class="main-content">
-        </div>
         @include('layouts.sidebar')
+        <div class="main-content">
+
+
         @yield('content')
+    </div>
 
         <script
   src="https://code.jquery.com/jquery-3.4.0.js"

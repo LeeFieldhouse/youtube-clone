@@ -3,9 +3,9 @@
         <i class="fas fa-bars top-nav-menu" id="top-nav-menu-btn"></i>
         <img src="{{asset('img/logo.png')}}" alt="" class="top-nav-logo">
     </div>
-    <form class="top-nav-search-container">
+    <form method="GET" class="top-nav-search-container">
         <input type="text" placeholder="Search">
-        <button><i class="fas fa-search "></i></button>
+        <button type="submit"><i class="fas fa-search "></i></button>
     </form>
     <div class="top-nav-right-side">
         <i class="fas fa-camera top-nav-right-icon"></i>

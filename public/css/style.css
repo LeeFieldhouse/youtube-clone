@@ -1,13 +1,31 @@
 html {
-
+    font-size: 62.5%;
+    height: 100%;
 }
 
-html, body {
-    font-size: 62.5%;
+body {
+    font-size: 1rem;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     width: 100%;
     height: 100%;
+    background-color: #FAFAFA;
+
+}
+
+.wrapper {
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 2rem;
+    box-sizing: border-box;
+}
+
+.line-break{
+    width: 100%;
+    height: 0;
+    border: 0.05rem solid lightgray;
+    margin: 1.2rem;
 
 }
 
@@ -27,6 +45,7 @@ html, body {
     font-size: 2.4rem;
     color: #787878;
     box-sizing: border-box;
+    border-bottom: 0.5rem solid #F3f3f3;
 }
 
 /* left side top nav */
@@ -42,6 +61,12 @@ html, body {
 .top-nav-menu {
     padding: 0 1rem;
     margin-right: 1.6rem;
+    cursor: pointer;
+
+}
+
+.top-nav-menu i {
+    cursor: pointer;
 }
 
 .top-nav-logo {
@@ -80,6 +105,12 @@ html, body {
 .top-nav-search-container button {
     height: 3.2rem;
     padding: 0.1rem 0.6rem;
+    width: 6.5rem;
+    border: 0.1rem solid #D2D2D2;
+    background-color: #f8f8f8;
+}
+.top-nav-search-container button:hover {
+    background-color: lightgray;
 }
 /* end top nav search */
 
@@ -114,11 +145,72 @@ html, body {
 /* end push everything below top nav */
 .sidebar {
     position: fixed;
-    box-sizing: border-box;
     width: 22.4rem;
     height: 100%;
-    background:red;
+    background:#F5F5F5;
     z-index: 1;
-
+    overflow: auto;
 }
-/* start side nav */
+
+.sidebar-item {
+    font-size: 1.6rem;
+    color: #909090;
+    height: 4rem;
+    width: 100%;
+    padding: 0 2.4rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sidebar-item:hover {
+    background-color: #D2D2D2;
+}
+
+.sidebar-item:first-child{
+    margin-top: 1rem;
+}
+
+.sidebar-item.active{
+    background-color: #D2D2D2;
+    color: #0a0a0a;
+    font-weight: 500;
+}
+
+.sidebar-item.active i{
+    color: #FF0000;
+}
+
+.sidebar-item-icon {
+ height: 100%;
+ width: 2.5rem;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ font-size: 2rem;
+ margin-right: 2.4rem;
+}
+
+.sidebar-item-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+}
+
+.sidebar-heading {
+    color: #606060;
+    font-size: 1.5rem;
+    width: 100%;
+    padding: 0 2.4rem ;
+}
+
+.sidebar-item-title {
+    max-width: 10.4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* end side nav */
+
