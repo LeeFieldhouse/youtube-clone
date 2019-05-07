@@ -29,6 +29,15 @@ body {
 
 }
 
+.section-title{
+ color: #0a0a0a;
+ font-size: 1.7rem;
+ height: 1.7rem;
+ max-width: 100%;
+ font-weight: 500;
+ margin-bottom: 2rem;
+}
+
 /* start top nav */
 .top-nav{
     position: fixed;
@@ -150,6 +159,7 @@ body {
     background:#F5F5F5;
     z-index: 1;
     overflow: auto;
+    display: none;
 }
 
 .sidebar-item {
@@ -214,3 +224,48 @@ body {
 }
 /* end side nav */
 
+/* start video card */
+.video-wrapper {
+    max-width: 132.1rem;
+    height: 40.6rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.video-preview-card{
+    width: 21rem;
+    height: 20.3rem;
+
+}
+
+.video-preview-card-video{
+    height: 11.8rem;
+    width: 100%;
+}
+
+.video-preview-card-content {
+    height: 8.5rem;
+    width: 100%;
+}
+
+.video-preview-card-title {
+    font-size: 1.5rem;
+    color: #0a0a0a;
+    font-weight: 500;
+    margin: 0.5rem 0;
+}
+
+.video-preview-card-channel {
+    color: #606060;
+    font-size: 1.3rem;
+}
+
+.video-preview-card-info {
+    color: #606060;
+    font-size: 1.3rem;
+}
+/* end video card */
