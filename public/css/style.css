@@ -12,12 +12,13 @@ body {
     background-color: #FAFAFA;
 
 }
-
+.main-section{
+    margin-top: 5.6rem;
+}
 .wrapper {
     width: 85%;
     height: 100%;
     margin: 0 auto;
-    margin-top: 5.6rem;
     padding-top: 2rem;
     box-sizing: border-box;
 }
@@ -291,9 +292,27 @@ body {
 
 
 /* start show video page */
+
 video{
     width: 100%;
-    max-height: 85%;
+    max-height: 80vh;
     background-color: black;
 }
+
+/* .video-page-wrapper {
+    display: flex;
+    flex: column;
+    width: 100%;
+    max-height: 100%;
+}
+
+.video-page-main-col {
+    width: 80%;
+    height: 100%;
+}
+
+.video-page-side-col {
+    width: 20%;
+    height: 100%;
+} */
 /*  */
