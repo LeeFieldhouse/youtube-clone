@@ -1,6 +1,6 @@
 <nav class="top-nav">
     <div class="top-nav-left-side">
-        <i class="fas fa-bars top-nav-menu"></i>
+        <i class="fas fa-bars top-nav-menu" id="top-nav-menu-btn"></i>
         <img src="{{asset('img/logo.png')}}" alt="" class="top-nav-logo">
     </div>
     <form class="top-nav-search-container">

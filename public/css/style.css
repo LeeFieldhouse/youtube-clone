@@ -1,12 +1,14 @@
 html {
-    font-size: 62.5%;
+
 }
 
-body {
-    font-size: 1rem;
+html, body {
+    font-size: 62.5%;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     width: 100%;
+    height: 100%;
+
 }
 
 /* start top nav */
@@ -110,5 +112,13 @@ body {
     margin-top: 5.6rem;
 }
 /* end push everything below top nav */
+.sidebar {
+    position: fixed;
+    box-sizing: border-box;
+    width: 22.4rem;
+    height: 100%;
+    background:red;
+    z-index: 1;
 
+}
 /* start side nav */
