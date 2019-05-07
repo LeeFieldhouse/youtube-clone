@@ -16,7 +16,7 @@
     Your browser does not support the video tag.
 </video>
 </div>
-    {{-- <div class="wrapper">
+    <div class="wrapper">
         <div class="video-page-wrapper">
         <div class="video-page-main-col">
             <div class="section-title">
@@ -29,5 +29,5 @@
             </div>
         </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
