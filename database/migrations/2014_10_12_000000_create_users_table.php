@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->text('description')->nullable();
-            $table->string('avatar')->default('http://codetube.test/img/default_avatar.png');
+            $table->string('avatar')->default('http://youtube.test/img/default_avatar.png');
             $table->string('cover_photo')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
