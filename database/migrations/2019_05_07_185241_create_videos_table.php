@@ -21,6 +21,7 @@ class CreateVideosTable extends Migration
             $table->string('video_url');
             $table->string('video_thumb');
             $table->string('file_type');
+            $table->integer('view_count')->default(0);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

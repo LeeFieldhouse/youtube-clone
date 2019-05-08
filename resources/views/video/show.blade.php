@@ -28,7 +28,7 @@
         {{-- start view count & likes section --}}
         <div class="video-page-view-likes-section">
             <div class="video-page-view-count">
-                164,392 views
+                {{$video->view_count}} views
             </div>
             <div class="video-page-like-dislike">
                 <form id="like-video-submit" class="like-video-form">

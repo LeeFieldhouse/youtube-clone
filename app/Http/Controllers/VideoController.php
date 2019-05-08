@@ -71,7 +71,8 @@ class VideoController extends Controller
 
     public function show(Video $video)
     {
-
+        $video->view_count = $video->view_count + 1;
+        $video->save();
 
         return view('video.show')->with('video', $video);
     }
