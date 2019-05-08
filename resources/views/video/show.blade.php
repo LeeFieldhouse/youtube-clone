@@ -65,8 +65,25 @@
             </div>
         </div>
         {{-- end view count & likes section --}}
+        <div class="line-break"></div>
+        {{-- start video description section --}}
+        <div class="video-description-section">
+            <div class="video-description-head-row">
+                <div class="video-description-head-left">
+                    <img src="{{$video->user->avatar}}" alt="" class="video-description-avatar">
+                    <span>{{$video->user->username}}</span>
+                </div>
+                <div class="video-description-head-right">
+                    <button class="subscribe-btn" type="submit">Subscribe</button>
+                </div>
+            </div>
+
+        </div>
+        {{-- end video description section --}}
     </div>
     {{-- end main col --}}
+
+
     {{-- start side col --}}
     <div class="video-page-side-col">
         <div class="section-title">
