@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -67,8 +68,10 @@ class VideoController extends Controller
      * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
+
     public function show(Video $video)
     {
+
 
         return view('video.show')->with('video', $video);
     }
