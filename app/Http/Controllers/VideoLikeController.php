@@ -24,8 +24,8 @@ class VideoLikeController extends Controller
         $videoLikeCount = VideoLike::where('video_id', $video->id)->count();
         $videoDislikeCount = VideoDislike::where('video_id', $video->id)->count();
 
-        $likedAlready = $video->likes()->where('video_id', $video->id)->where('user_id', auth()->id())->first();
-        $dislikedAlready = $video->dislikes()->where('video_id', $video->id)->where('user_id', auth()->id())->first();
+        $likedAlready = $video->likes()->where('user_id', auth()->id())->first();
+        $dislikedAlready = $video->dislikes()->where('user_id', auth()->id())->first();
 
 
 
@@ -64,17 +64,12 @@ class VideoLikeController extends Controller
 
         if(auth()){
             $video = Video::where('slug', $video)->first();
+
             $videoLikeCount = VideoLike::where('video_id', $video->id)->count();
             $videoDislikeCount = VideoDislike::where('video_id', $video->id)->count();
-            $likedAlready = $video->likes()->where('video_id', $video->id)->where('user_id', auth()->id())->first();
 
-            $dislikedAlready = $video->dislikes()
-            ->where(
-                [
-                    'video_id' => $video->id,
-                    'user_id' => auth()->id()
-
-                ])->first();
+            $likedAlready = $video->likes()->where('user_id', auth()->id())->first();
+            $dislikedAlready = $video->dislikes()->where('user_id', auth()->id())->first();
 
             // if disliked already just return current count
             if($dislikedAlready){
