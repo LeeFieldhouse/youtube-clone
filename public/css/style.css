@@ -290,6 +290,7 @@ body {
     left: 0;
     margin: 10rem auto;
     display: none;
+    z-index: 1;
 }
 
 .upload-form {
@@ -304,6 +305,7 @@ video{
     width: 100%;
     max-height: 80vh;
     background-color: black;
+
 }
 
 .video-page-wrapper {
