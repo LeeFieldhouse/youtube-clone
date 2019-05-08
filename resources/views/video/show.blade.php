@@ -34,7 +34,7 @@
                 <form id="like-video-submit" class="like-video-form">
                     <button type="submit"
                     class="
-                    @if($video->likes()->where('user_id', Auth::user())->where('video_id', $video->id))
+                    @if($video->likes()->where(['user_id' => Auth::user()->id, 'video_id' => $video->id])->first())
                     liked
                     @endif
                     like-video-button">
@@ -46,10 +46,15 @@
                 </form>
             <form id="dislike-video-submit"  method="POST" class="like-video-form">
                 @csrf
-                    <button type="submit" class="like-video-button">
+                    <button type="submit" class="
+                    like-video-button
+                    @if($video->dislikes()->where(['user_id' => Auth::user()->id, 'video_id' => $video->id])->first())
+                    liked
+                    @endif
+                    ">
                         <i class="fas fa-thumbs-down"></i>
                         <span id="video-dislike-count">
-                            2.8k
+                            {{$video->dislikes()->count()}}
                         </span>
                     </button>
                 </form>
@@ -82,7 +87,6 @@ $(document).ready(()=> {
     //start video like submit
     $("#like-video-submit").submit(function(e){
         e.preventDefault();
-
             $.ajax({
                 /* the route pointing to the post function */
                 url: '{{route("likeVideo", $video->slug )}}',
@@ -98,9 +102,26 @@ $(document).ready(()=> {
                     $('#dislike-video-submit button').removeClass('liked')
                 }
             });
+    }); //end video like  submit
 
+    //start video like submit
+    $("#dislike-video-submit").submit(function(e){
+        e.preventDefault();
+            $.ajax({
+                /* the route pointing to the post function */
+                url: '{{route("dislikeVideo", $video->slug )}}',
+                type: 'POST',
 
+                data: {_token: CSRF_TOKEN},
+                dataType: 'JSON',
 
+                success: function (data) {
+                    $('#like-video-submit span').text(data.videoLikeCount);
+                    $('#dislike-video-submit span').text(data.videoDislikeCount);
+                    $('#dislike-video-submit button').addClass('liked')
+                    $('#like-video-submit button').removeClass('liked')
+                }
+            });
     }); //end video like  submit
 
 
