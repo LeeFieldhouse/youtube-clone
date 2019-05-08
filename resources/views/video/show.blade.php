@@ -32,7 +32,12 @@
             </div>
             <div class="video-page-like-dislike">
                 <form id="like-video-submit" class="like-video-form">
-                    <button type="submit" class="like-video-button">
+                    <button type="submit"
+                    class="
+                    @if($video->likes()->where('user_id', Auth::user())->where('video_id', $video->id))
+                    liked
+                    @endif
+                    like-video-button">
                         <i class="fas fa-thumbs-up"></i>
                         <span id="video-like-count">
                             {{$video->likes()->count()}}
@@ -43,7 +48,9 @@
                 @csrf
                     <button type="submit" class="like-video-button">
                         <i class="fas fa-thumbs-down"></i>
-                        2.8k
+                        <span id="video-dislike-count">
+                            2.8k
+                        </span>
                     </button>
                 </form>
             </div>
@@ -66,48 +73,37 @@
 
 @section('script')
 <script>
-(document).onload(()=> {
+$(document).ready(()=> {
 
     // Like Video
     let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+
+    //start video like submit
     $("#like-video-submit").submit(function(e){
         e.preventDefault();
-        $.ajax({
-            /* the route pointing to the post function */
-            url: '{{route("likeVideo", $video->slug )}}',
-            type: 'POST',
 
-            data: {_token: CSRF_TOKEN},
-            dataType: 'JSON',
+            $.ajax({
+                /* the route pointing to the post function */
+                url: '{{route("likeVideo", $video->slug )}}',
+                type: 'POST',
 
-            success: function (data) {
-                $('#like-video-submit span').text(data);
-                $('#like-video-submit button').addClass('liked')
-                $('#dislike-video-submit button').removeClass('liked')
-            }
-        });
-    });
-    // end like video
+                data: {_token: CSRF_TOKEN},
+                dataType: 'JSON',
 
-    // dislike Video
-    $("#dislike-video-submit").submit(function(e){
-        e.preventDefault();
-        $.ajax({
-            /* the route pointing to the post function */
-            url: '{{route("likeVideo", $video->slug )}}',
-            type: 'POST',
+                success: function (data) {
+                    $('#like-video-submit span').text(data.videoLikeCount);
+                    $('#dislike-video-submit span').text(data.videoDislikeCount);
+                    $('#like-video-submit button').addClass('liked')
+                    $('#dislike-video-submit button').removeClass('liked')
+                }
+            });
 
-            data: {_token: CSRF_TOKEN},
-            dataType: 'JSON',
 
-            success: function (data) {
-                $('#like-video-submit span').text(data);
-                $('#like-video-submit button').addClass('liked')
-                $('#dislike-video-submit button').removeClass('liked')
-            }
-        });
-    });
-    // end like video
+
+    }); //end video like  submit
+
+
 
 
 })
