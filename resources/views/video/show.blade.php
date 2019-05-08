@@ -3,7 +3,7 @@
     {{$video->title}}
 @endsection
 @section('content')
-<div class="main-video">
+{{-- start main video --}}
 <video
 
     controls
@@ -15,19 +15,47 @@
     />
     Your browser does not support the video tag.
 </video>
-</div>
-    <div class="wrapper">
-        <div class="video-page-wrapper">
-        <div class="video-page-main-col">
-            <div class="section-title">
-                {{$video->title}}
+{{-- end main video --}}
+{{-- start flex col wrapper --}}
+<div class="video-page-wrapper">
+    {{-- start main col --}}
+    <div class="video-page-main-col">
+        {{-- start video page title --}}
+        <div class="section-title">
+            {{$video->title}}
+        </div>
+        {{-- end video page title --}}
+        {{-- start view count & likes section --}}
+        <div class="video-page-view-likes-section">
+            <div class="video-page-view-count">
+                164,392 views
+            </div>
+            <div class="video-page-like-dislike">
+                <form action="" class="like-video-form">
+                    <button type="submit">
+                        <i class="fas fa-thumbs-up"></i>
+                        2.4k
+                    </button>
+                </form>
+                <form action="" class="like-video-form">
+                    <button type="submit">
+                        <i class="fas fa-thumbs-down"></i>
+                        2.8k
+                    </button>
+                </form>
             </div>
         </div>
-        <div class="video-page-side-col">
-            <div class="section-title">
-                {{$video->title}}
-            </div>
-        </div>
+        {{-- end view count & likes section --}}
+    </div>
+    {{-- end main col --}}
+    {{-- start side col --}}
+    <div class="video-page-side-col">
+        <div class="section-title">
+            {{$video->title}}
         </div>
     </div>
+    {{-- end side col --}}
+</div>
+{{-- end flex col wrapper --}}
+
 @endsection
