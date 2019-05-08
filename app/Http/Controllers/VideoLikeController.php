@@ -11,50 +11,52 @@ use App\VideoDislike;
 
 class VideoLikeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function like($video) {
 
 
-        if(auth()){
+        $video = Video::where('slug', $video)->first();
+        $videoLikeCount = VideoLike::where('video_id', $video->id)->count();
+        $videoDislikeCount = VideoDislike::where('video_id', $video->id)->count();
 
-            $video = Video::where('slug', $video)->first();
-            $videoLikeCount = VideoLike::where('video_id', $video->id)->count();
-            $videoDislikeCount = VideoDislike::where('video_id', $video->id)->count();
-
-            $likedAlready = $video->likes()->where('video_id', $video->id)->where('user_id', auth()->id())->first();
-            $dislikedAlready = $video->dislikes()->where('video_id', $video->id)->where('user_id', auth()->id())->first();
+        $likedAlready = $video->likes()->where('video_id', $video->id)->where('user_id', auth()->id())->first();
+        $dislikedAlready = $video->dislikes()->where('video_id', $video->id)->where('user_id', auth()->id())->first();
 
 
 
-            // if liked already then just return the count
-            if($likedAlready){
-                return response()->json(array(
-                    'videoLikeCount'=> $videoLikeCount,
-                    'videoDislikeCount' => $videoDislikeCount
-                ));
-            }
-
-            // check if disliked, if so delete dislike
-            elseif($dislikedAlready){
-                $dislikedAlready->delete();
-                $videoDislikeCount = VideoDislike::where('video_id', $video->id)->count();
-
-            }
-
-            // continue and create like
-            $like = new VideoLike;
-            $like->user_id = auth()->id();
-            $like->video_id = $video->id;
-            $like->save();
-            $videoLikeCount = VideoLike::where('video_id', $video->id)->count();
-
+        // if liked already then just return the count
+        if($likedAlready){
             return response()->json(array(
                 'videoLikeCount'=> $videoLikeCount,
                 'videoDislikeCount' => $videoDislikeCount
             ));
         }
-        else {
-            return redirect()->route('login');
+
+        // check if disliked, if so delete dislike
+        elseif($dislikedAlready){
+            $dislikedAlready->delete();
+            $videoDislikeCount = VideoDislike::where('video_id', $video->id)->count();
+
         }
+
+        // continue and create like
+        $like = new VideoLike;
+        $like->user_id = auth()->id();
+        $like->video_id = $video->id;
+        $like->save();
+        $videoLikeCount = VideoLike::where('video_id', $video->id)->count();
+
+        return response()->json(array(
+            'videoLikeCount'=> $videoLikeCount,
+            'videoDislikeCount' => $videoDislikeCount
+        ));
+
+
     }
 
 
@@ -100,8 +102,6 @@ class VideoLikeController extends Controller
                 'videoDislikeCount' => $videoDislikeCount
             ));
         }
-        else {
-            return redirect()->route('login');
-        }
+
     }
 }
