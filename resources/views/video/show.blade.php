@@ -34,9 +34,11 @@
                 <form id="like-video-submit" class="like-video-form">
                     <button type="submit"
                     class="
+                    @auth
                     @if($video->likes()->where(['user_id' => Auth::user()->id, 'video_id' => $video->id])->first())
                     liked
                     @endif
+                    @endauth
                     like-video-button">
                         <i class="fas fa-thumbs-up"></i>
                         <span id="video-like-count">
@@ -48,9 +50,11 @@
                 @csrf
                     <button type="submit" class="
                     like-video-button
+                    @auth
                     @if($video->dislikes()->where(['user_id' => Auth::user()->id, 'video_id' => $video->id])->first())
                     liked
                     @endif
+                    @endauth
                     ">
                         <i class="fas fa-thumbs-down"></i>
                         <span id="video-dislike-count">
