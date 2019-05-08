@@ -40,6 +40,12 @@ body {
  margin-bottom: 2rem;
 }
 
+.liked , .liked > i {
+    color: #065FD4 !important;
+}
+
+
+
 /* start top nav */
 .top-nav{
     position: fixed;
@@ -57,6 +63,7 @@ body {
     color: #787878;
     box-sizing: border-box;
     border-bottom: 0.5rem solid #F3f3f3;
+    z-index: 1;
 }
 
 /* left side top nav */
@@ -341,7 +348,7 @@ video{
         margin-right: 1rem;
     }
 
-    .like-video-form button {
+    .like-video-button {
         background: none;
         border: none;
         display: flex;
@@ -349,10 +356,16 @@ video{
         align-items: center;
         color: #606060;
         font-weight: 600;
+        border: none;
+    }
+
+    .like-video-button:focus {
+        border: none;
+        outline: none;
     }
 
 
-    .like-video-form button i {
+    .like-video-button i {
         font-size: 2rem;
         margin-right: 1rem;
         color: #909090;

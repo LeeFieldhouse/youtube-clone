@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function video() {
         return $this->hasMany(Video::class);
     }
+
+    public function likes() {
+        return $this->hasMany(VideoLike::class);
+    }
 }

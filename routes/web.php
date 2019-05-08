@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PageController@index')->name('index');
+Route::post('/video/{video}', 'VideoLikeController@like')->name('likeVideo');
 Route::resource('video', 'VideoController');
 Auth::routes();
 

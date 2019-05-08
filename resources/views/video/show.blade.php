@@ -31,14 +31,17 @@
                 164,392 views
             </div>
             <div class="video-page-like-dislike">
-                <form action="" class="like-video-form">
-                    <button type="submit">
+                <form id="like-video-submit" class="like-video-form">
+                    <button type="submit" class="like-video-button">
                         <i class="fas fa-thumbs-up"></i>
-                        2.4k
+                        <span id="video-like-count">
+                            {{$video->likes()->count()}}
+                        </span>
                     </button>
                 </form>
-                <form action="" class="like-video-form">
-                    <button type="submit">
+            <form id="dislike-video-submit"  method="POST" class="like-video-form">
+                @csrf
+                    <button type="submit" class="like-video-button">
                         <i class="fas fa-thumbs-down"></i>
                         2.8k
                     </button>
@@ -58,4 +61,55 @@
 </div>
 {{-- end flex col wrapper --}}
 
+
+@endsection
+
+@section('script')
+<script>
+(document).onload(()=> {
+
+    // Like Video
+    let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $("#like-video-submit").submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            /* the route pointing to the post function */
+            url: '{{route("likeVideo", $video->slug )}}',
+            type: 'POST',
+
+            data: {_token: CSRF_TOKEN},
+            dataType: 'JSON',
+
+            success: function (data) {
+                $('#like-video-submit span').text(data);
+                $('#like-video-submit button').addClass('liked')
+                $('#dislike-video-submit button').removeClass('liked')
+            }
+        });
+    });
+    // end like video
+
+    // dislike Video
+    $("#dislike-video-submit").submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            /* the route pointing to the post function */
+            url: '{{route("likeVideo", $video->slug )}}',
+            type: 'POST',
+
+            data: {_token: CSRF_TOKEN},
+            dataType: 'JSON',
+
+            success: function (data) {
+                $('#like-video-submit span').text(data);
+                $('#like-video-submit button').addClass('liked')
+                $('#dislike-video-submit button').removeClass('liked')
+            }
+        });
+    });
+    // end like video
+
+
+})
+</script>
 @endsection
