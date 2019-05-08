@@ -77,6 +77,12 @@
                     <button class="subscribe-btn" type="submit">Subscribe</button>
                 </div>
             </div>
+            <div class="video-description-row">
+                <div id="video-description" class="video-description-short video-description-full">
+                ■ INDIA, AHMEDABAD: With the collapse of the 1st Indian front, fresh thinking was needed. I decided to venture down a completely new alley. To my great surprise the Daru man and all the hangers on immediately ceased to shadow me. Maybe they were not welcome in that street. Either way with now that I was finally alone I felt my chances of seeing the inside of an Indian home in this neighborhood were vastly inmproved.
+                </div>
+                <div id="show-more-btn">SHOW MORE</div>
+            </div>
 
         </div>
         {{-- end video description section --}}
@@ -146,7 +152,16 @@ $(document).ready(()=> {
     }); //end video like  submit
 
 
-
+    // start show more description
+    $('#show-more-btn').click(() => {
+        $('#video-description').toggleClass('video-description-short')
+        if($('#video-description').hasClass('video-description-short')){
+            $('#show-more-btn').text('SHOW MORE');
+        }else{
+            $('#show-more-btn').text('SHOW LESS');
+        }
+    })
+    // end show more description
 
 })
 </script>
