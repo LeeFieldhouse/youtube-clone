@@ -45,15 +45,25 @@ body {
 }
 
 .subscribe-btn{
+
+    display: none;
+}
+
+.subscribe-btn button {
     font-size: 1.5rem;
     color: white;
     height: 3.6rem;
-    width: 11.4rem;
+    max-width: 100%;
     padding: 1rem 1.6rem;
     margin: 0.1rem 0.4rem;
     background-color: #FF0000;
     border: none;
     cursor: pointer;
+}
+
+.unsub-btn {
+    background-color: #E5E5E5!important;
+    color: #606060!important ;
 }
 
 
@@ -466,6 +476,14 @@ video{
         margin-top: 0.8rem;
         cursor: pointer;
     }
+
+    .show-btn {
+        display: block !important;
+    }
+    .hide-btn {
+        display: none !important;
+    }
+
     /* end main col section */
 
 

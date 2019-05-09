@@ -17,6 +17,11 @@ Route::post('/video/{video}/dislike', 'VideoLikeController@dislike')->name('disl
 Route::resource('video', 'VideoController');
 
 
+Route::post('/{channel}/subscribe', 'UserController@subscribe')->name('subscribe');
+Route::post('/{channel}/unsubscribe', 'UserController@unsubscribe')->name('unsubscribe');
+
+
+
 Route::get('/logout', 'Auth\LoginController@logout');
 Auth::routes();
 

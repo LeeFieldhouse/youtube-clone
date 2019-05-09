@@ -35,7 +35,7 @@
                     <button type="submit"
                     class="
                     @auth
-                    @if($video->likes()->where(['user_id' => Auth::user()->id, 'video_id' => $video->id])->first())
+                    @if($liked)
                     liked
                     @endif
                     @endauth
@@ -51,7 +51,7 @@
                     <button type="submit" class="
                     like-video-button
                     @auth
-                    @if($video->dislikes()->where(['user_id' => Auth::user()->id, 'video_id' => $video->id])->first())
+                    @if($disliked)
                     liked
                     @endif
                     @endauth
@@ -81,9 +81,34 @@
                     </div>
 
                 </div>
-                <div class="video-description-head-right">
-                    <button class="subscribe-btn" type="submit">Subscribe</button>
+
+                {{-- sub buttons --}}
+                @auth
+                <div>
+
+                        <form class="video-description-head-right
+                        subscribe-btn
+                        @if(!$subscribed)
+                            show-btn
+                        @endif
+                        " id="subscribe-btn" method="POST">
+
+                            <button type="submit">Subscribe <span>{{$subcount}}</span></button>
+                        </form>
+
+                        <form  id="unsubscribe-btn" method="POST" class="video-description-head-right
+                        subscribe-btn
+                        @if($subscribed)
+                            show-btn
+                        @endif
+                        ">
+
+                            <button class="unsub-btn" type="submit">Unsubscribe <span>{{$subcount}}</span></button>
+                        </form>
+
                 </div>
+                @endauth
+
             </div>
             <div class="video-description-row">
                 <div id="video-description" class="video-description-short video-description-full">
@@ -139,7 +164,7 @@ $(document).ready(()=> {
             });
     }); //end video like  submit
 
-    //start video like submit
+    //start video dislike submit
     $("#dislike-video-submit").submit(function(e){
         e.preventDefault();
             $.ajax({
@@ -157,7 +182,49 @@ $(document).ready(()=> {
                     $('#like-video-submit button').removeClass('liked')
                 }
             });
-    }); //end video like  submit
+    }); //end video dislike  submit
+
+
+    // start video subscripe submit
+    $('#subscribe-btn').click(function (e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            url: '{{route('subscribe', $video->user->username)}}',
+            type: 'POST',
+            data: {_token: CSRF_TOKEN},
+            dataType: 'JSON',
+
+            success: function (data){
+                $('#unsubscribe-btn').addClass('show-btn').removeClass('hide-btn');
+                $('#subscribe-btn').addClass('hide-btn');
+                $('.subscribe-btn button span').text(data.subcount)
+            }
+        });
+    });
+    //end video subscribe submit
+
+    // start video subscripe submit
+    $('#unsubscribe-btn').click(function (e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            url: '{{route('unsubscribe', $video->user->username)}}',
+            type: 'POST',
+            data: {_token: CSRF_TOKEN},
+            dataType: 'JSON',
+
+            success: function (data){
+                $('#unsubscribe-btn').addClass('hide-btn');
+                $('#subscribe-btn').removeClass('hide-btn').addClass('show-btn');
+                $('.subscribe-btn button span').text(data.subcount)
+            }
+        });
+    });
+    //end video subscribe submit
+
 
 
     // start show more description

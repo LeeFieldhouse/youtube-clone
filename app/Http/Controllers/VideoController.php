@@ -71,10 +71,48 @@ class VideoController extends Controller
 
     public function show(Video $video)
     {
-        $video->view_count = $video->view_count + 1;
-        $video->save();
+        // subscriber count
+            $subcount = $video->user->subscribers->count();
+        // end subscriber count
 
-        return view('video.show')->with('video', $video);
+        // add view to view count
+            $video->view_count = $video->view_count + 1;
+            $video->save();
+        // end add view to view count
+
+
+
+        if(auth()->user()){
+         // check if subscribed to channel
+            $subscribed = Auth::user()->subscriptions()->where('channel_id', $video->user->id)->first();
+        // end check if subscribed to channel
+
+        // check if liked video
+            $liked = $video->likes()->where(['user_id' => Auth::user()->id, 'video_id' => $video->id])->first();
+        // end check if liked video
+
+        //  check if disliked video
+            $disliked = $video->dislikes()->where(['user_id' => Auth::user()->id, 'video_id' => $video->id])->first();
+        // check if disliked video
+
+
+        return view('video.show')->with([
+            'video' => $video,
+            'subscribed' => $subscribed,
+            'liked' => $liked,
+            'disliked' => $disliked,
+            'subcount' => $subcount,
+        ]);
+        }else{
+            return view('video.show')->with([
+            'video' => $video,
+            'subcount' => $subcount,
+
+
+            ]);
+        }
+
+
     }
 
     /**

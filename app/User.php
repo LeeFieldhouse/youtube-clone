@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,5 +52,17 @@ class User extends Authenticatable
     public function dislikes() {
         return $this->hasMany(VideoDislike::class);
     }
+
+    public function subscribers(){
+        return $this->belongsToMany(User::class, 'subscriptions','channel_id', 'subscriber_id')->withTimestamps();
+    }
+
+    public function subscriptions(){
+        return $this->belongsToMany(User::class, 'subscriptions',
+        'subscriber_id', 'channel_id')->withTimestamps();
+    }
+
+
+
 
 }
