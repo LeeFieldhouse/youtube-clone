@@ -65,13 +65,21 @@
             </div>
         </div>
         {{-- end view count & likes section --}}
+
         <div class="line-break"></div>
+
         {{-- start video description section --}}
         <div class="video-description-section">
             <div class="video-description-head-row">
                 <div class="video-description-head-left">
                     <img src="{{$video->user->avatar}}" alt="" class="video-description-avatar">
-                    <span>{{$video->user->username}}</span>
+                    <div class="video-description-head-left-info">
+                        <div>{{$video->user->username}}</div>
+                        <div>
+                            Published on {{$video->created_at->format('j M Y')}}
+                        </div>
+                    </div>
+
                 </div>
                 <div class="video-description-head-right">
                     <button class="subscribe-btn" type="submit">Subscribe</button>
@@ -81,7 +89,7 @@
                 <div id="video-description" class="video-description-short video-description-full">
                 ■ INDIA, AHMEDABAD: With the collapse of the 1st Indian front, fresh thinking was needed. I decided to venture down a completely new alley. To my great surprise the Daru man and all the hangers on immediately ceased to shadow me. Maybe they were not welcome in that street. Either way with now that I was finally alone I felt my chances of seeing the inside of an Indian home in this neighborhood were vastly inmproved.
                 </div>
-                <div id="show-more-btn">SHOW MORE</div>
+                <div id="show-more-btn" class="show-more-btn">SHOW MORE</div>
             </div>
 
         </div>
