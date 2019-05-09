@@ -419,6 +419,17 @@ video{
         margin-right: 1.5rem;
     }
 
+    .video-description-head-left-info div:first-of-type{
+        font-size: 1.4rem;
+        color: #0a0a0a;
+        font-weight: 500;
+    }
+
+    .video-description-head-left-info div:last-of-type{
+        font-size: 1.3rem;
+        color: grey;
+    }
+
 
     .video-description-row {
         margin-left: 6.5rem;
@@ -444,9 +455,10 @@ video{
         overflow: hidden;
     }
 
-    .video-description-row div:last-child{
 
-        height: 5.5rem;
+    .video-description-row .show-more-btn{
+
+        height: 4rem;
         color: #0a0a0a;
         font-size: 1.4rem;
         line-height: 2.1rem;
