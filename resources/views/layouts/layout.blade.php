@@ -7,7 +7,7 @@
         <title>@yield('title')</title>
 
         <!-- fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600" rel="stylesheet">
         {{-- font awesome --}}
         <link rel="stylesheet" href="{{asset('css/all.css')}}">
         {{-- styles --}}

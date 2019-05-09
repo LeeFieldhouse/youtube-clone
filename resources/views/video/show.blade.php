@@ -128,6 +128,8 @@
             <img src="{{auth()->user()->avatar}}" alt="" class="comment-avatar">
             <form class="submit-comment" id="submit-comment">
                 <textarea name="comment-text" id="comment-text" class="comment-text" placeholder="Add a public comment..."></textarea>
+                <button class="submit-comment-button" id="submit-comment-button" type="submit" class="">COMMENT</button>
+
 
             </form>
         </div>
@@ -152,6 +154,18 @@
 @section('script')
 <script>
 $(document).ready(()=> {
+
+    // add comment js
+    $('#comment-text').keyup(()=>{
+
+        if($('#comment-text').val() !== ''){
+            $('#submit-comment-button').css({background: '#065FD4'});
+        }else{
+            $('#submit-comment-button').css({background: '#cccccc'});
+        }
+    })
+    //
+
 
     // Like Video
     let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
