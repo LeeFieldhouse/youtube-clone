@@ -480,8 +480,53 @@ video{
     .show-btn {
         display: block !important;
     }
+
     .hide-btn {
         display: none !important;
+    }
+
+    /* start comment section */
+    .comment-count{
+        font-size: 1.6rem;
+        color: #0a0a0a
+    }
+
+    .comment-avatar{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 100%;
+        margin-right: 2rem;
+    }
+
+    .add-comment-section{
+        width: 100%;
+        max-height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+
+    }
+
+    .submit-comment{
+        width: 100%;
+    }
+
+    .comment-text {
+        width: 100%;
+        border: none;
+        height: 2.3rem;
+        border-bottom: 0.1rem solid lightgray;
+        background: none;
+        outline: none;
+        box-sizing: border-box;
+        resize: vertical;
+        min-height: 2.5rem;
+        transition: all 1s;
+    }
+
+    .comment-text:focus {
+        border-bottom: 0.2rem solid #0a0a0a;
     }
 
     /* end main col section */

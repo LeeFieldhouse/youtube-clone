@@ -112,13 +112,26 @@
             </div>
             <div class="video-description-row">
                 <div id="video-description" class="video-description-short video-description-full">
-                ■ INDIA, AHMEDABAD: With the collapse of the 1st Indian front, fresh thinking was needed. I decided to venture down a completely new alley. To my great surprise the Daru man and all the hangers on immediately ceased to shadow me. Maybe they were not welcome in that street. Either way with now that I was finally alone I felt my chances of seeing the inside of an Indian home in this neighborhood were vastly inmproved.
+                {{$video->description}}
                 </div>
                 <div id="show-more-btn" class="show-more-btn">SHOW MORE</div>
             </div>
 
         </div>
         {{-- end video description section --}}
+        <br>
+        {{-- start video comment section --}}
+        <div class="comment-count">1,376 Comments</div>
+        <br>
+        @auth
+        <div class="add-comment-section">
+            <img src="{{auth()->user()->avatar}}" alt="" class="comment-avatar">
+            <form class="submit-comment" id="submit-comment">
+                <textarea name="comment-text" id="comment-text" class="comment-text" placeholder="Add a public comment..."></textarea>
+
+            </form>
+        </div>
+        @endauth
     </div>
     {{-- end main col --}}
 
@@ -237,6 +250,10 @@ $(document).ready(()=> {
         }
     })
     // end show more description
+
+    // expand comment text
+
+    // end expand comment text
 
 })
 </script>
