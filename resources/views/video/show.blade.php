@@ -37,119 +37,133 @@
 <script>
 $(document).ready(()=> {
 
-    // add comment js
-    $('#comment-text').keyup(()=>{
 
-        if($('#comment-text').val() !== ''){
-            $('#submit-comment-button').css({background: '#065FD4'});
-        }else{
-            $('#submit-comment-button').css({background: '#cccccc'});
-        }
-    })
-    //
-
-
-    // Like Video
     let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
 
 
     //start video like submit
     $("#like-video-submit").submit(function(e){
         e.preventDefault();
-            $.ajax({
-                /* the route pointing to the post function */
-                url: '{{route("likeVideo", $video->slug )}}',
-                type: 'POST',
 
-                data: {_token: CSRF_TOKEN},
-                dataType: 'JSON',
-
-                success: function (data) {
+            $.post('{{route("likeVideo", $video->slug )}}',
+                {_token: CSRF_TOKEN},
+                function (data) {
                     $('#like-video-submit span').text(data.videoLikeCount);
                     $('#dislike-video-submit span').text(data.videoDislikeCount);
                     $('#like-video-submit button').addClass('liked')
                     $('#dislike-video-submit button').removeClass('liked')
-                }
-            });
+                },
+                'JSON'
+                 )
+
     }); //end video like  submit
 
     //start video dislike submit
     $("#dislike-video-submit").submit(function(e){
         e.preventDefault();
-            $.ajax({
-                /* the route pointing to the post function */
-                url: '{{route("dislikeVideo", $video->slug )}}',
-                type: 'POST',
+        $.post(
+            '{{route("dislikeVideo", $video->slug)}}',
+            {_token: CSRF_TOKEN},
+            function (data){
+                $('#like-video-submit span').text(data.videoLikeCount)
+                $('#dislike-video-submit span').text(data.videoDislikeCount)
+                $('#dislike-video-submit button').addClass('liked')
+                $('#like-video-submit button').removeClass('liked')
+            },
+            'JSON'
+        )
 
-                data: {_token: CSRF_TOKEN},
-                dataType: 'JSON',
 
-                success: function (data) {
-                    $('#like-video-submit span').text(data.videoLikeCount);
-                    $('#dislike-video-submit span').text(data.videoDislikeCount);
-                    $('#dislike-video-submit button').addClass('liked')
-                    $('#like-video-submit button').removeClass('liked')
-                }
-            });
+
     }); //end video dislike  submit
 
 
     // start video subscripe submit
-    $('#subscribe-btn').click(function (e) {
-
+    $('#subscribe-btn').submit(function (e) {
+        alert('yo')
         e.preventDefault();
-
-        $.ajax({
-            url: '{{route('subscribe', $video->user->username)}}',
-            type: 'POST',
-            data: {_token: CSRF_TOKEN},
-            dataType: 'JSON',
-
-            success: function (data){
+        $.post(
+            '{{route("subscribe", $video->user->username)}}',
+            {_token: CSRF_TOKEN},
+            function(data){
                 $('#unsubscribe-btn').addClass('show-btn').removeClass('hide-btn');
                 $('#subscribe-btn').addClass('hide-btn');
                 $('.subscribe-btn button span').text(data.subcount)
-            }
-        });
+            },
+            'JSON'
+        )
     });
     //end video subscribe submit
 
-    // start video subscripe submit
-    $('#unsubscribe-btn').click(function (e) {
-
+    // start video unsubscripe submit
+    $('#unsubscribe-btn').submit(function (e) {
         e.preventDefault();
-
-        $.ajax({
-            url: '{{route('unsubscribe', $video->user->username)}}',
-            type: 'POST',
-            data: {_token: CSRF_TOKEN},
-            dataType: 'JSON',
-
-            success: function (data){
+        $.post(
+            '{{route("unsubscribe", $video->user->username)}}',
+            {_token: CSRF_TOKEN},
+            function(data){
                 $('#unsubscribe-btn').addClass('hide-btn');
                 $('#subscribe-btn').removeClass('hide-btn').addClass('show-btn');
                 $('.subscribe-btn button span').text(data.subcount)
-            }
-        });
+            },
+            'JSON'
+        )
     });
-    //end video subscribe submit
+    //end video unsubscribe submit
 
 
+    // start add comment
+    $('#comment-text').keyup(()=>{
 
-    // start show more description
-    $('#show-more-btn').click(() => {
-        $('#video-description').toggleClass('video-description-short')
-        if($('#video-description').hasClass('video-description-short')){
-            $('#show-more-btn').text('SHOW MORE');
+        if($('#comment-text').val() !== ''){
+
+            $('#submit-comment-button').css({background: '#065FD4'});
         }else{
-            $('#show-more-btn').text('SHOW LESS');
+            $('#submit-comment-button').css({background: '#cccccc'});
         }
     })
-    // end show more description
 
-    // expand comment text
+    // start submit comment
+    $('#submit-comment').submit(e =>{
+        e.preventDefault()
 
-    // end expand comment text
+        $.post(
+            '{{route("videoComment", $video->slug)}}',
+            {
+                _token: CSRF_TOKEN,
+                comment_text: $('#comment-text').val()
+            },
+            function(data){
+                alert(data)
+            },
+            'JSON'
+        )
+    })
+    // end submit comment
+    // end add comment
+
+
+    // start replies
+    // $('#reply-text').keyup(()=>{
+    //     if($('#reply-text').val() !== ''){
+    //         $('#submit-reply-button').css({background: '#065FD4'});
+    //     }else{
+    //         $('#submit-reply-button').css({background: '#cccccc'});
+    //     }
+    // })
+    // show replies
+    $('.show-replies').click(()=>{
+        $('.view-comment-card.reply').addClass('hide');
+        $('.show-replies').hide()
+        $('.hide-replies').show()
+    })
+    $('.hide-replies').click(() => {
+        $('.view-comment-card.reply').removeClass('hide');
+        $('.hide-replies').hide()
+        $('.show-replies').show()
+    })
+    // end show rpelies
 
 })
 </script>

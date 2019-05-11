@@ -14,6 +14,7 @@
 Route::get('/', 'PageController@index')->name('index');
 Route::post('/video/{video}/like', 'VideoLikeController@like')->name('likeVideo');
 Route::post('/video/{video}/dislike', 'VideoLikeController@dislike')->name('dislikeVideo');
+Route::post('/video/{video}/comment', 'CommentController@addCommentToVideo')->name('videoComment');
 Route::resource('video', 'VideoController');
 
 

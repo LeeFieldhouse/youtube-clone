@@ -21,4 +21,8 @@ class Video extends Model
     public function dislikes() {
         return $this->hasMany(VideoDislike::class);
     }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }

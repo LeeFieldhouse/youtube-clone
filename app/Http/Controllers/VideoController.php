@@ -96,6 +96,7 @@ class VideoController extends Controller
         // check if disliked video
 
 
+
         return view('video.show')->with([
             'video' => $video,
             'subscribed' => $subscribed,

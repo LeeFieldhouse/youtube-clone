@@ -62,6 +62,10 @@ class User extends Authenticatable
         'subscriber_id', 'channel_id')->withTimestamps();
     }
 
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
 
 
 
