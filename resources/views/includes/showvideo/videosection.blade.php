@@ -12,6 +12,7 @@
 </video>
 {{-- end main video --}}
 {{-- start flex col wrapper --}}
+
 <div class="video-page-wrapper">
     {{-- start main col --}}
     <div class="video-page-main-col">

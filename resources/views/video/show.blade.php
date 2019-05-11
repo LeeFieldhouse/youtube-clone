@@ -3,6 +3,8 @@
     {{$video->title}}
 @endsection
 @section('content')
+<!-- start video page body -->
+<div class="video-page-body">
         {{-- start video & video description section --}}
         @include('includes.showvideo.videosection')
         {{-- end video & video description section --}}
@@ -15,6 +17,7 @@
 
 
 
+
     {{-- start side col --}}
     <div class="video-page-side-col">
         <div class="section-title">
@@ -24,6 +27,8 @@
     {{-- end side col --}}
 </div>
 {{-- end flex col wrapper --}}
+
+</div><!-- end video page body -->
 
 
 @endsection
