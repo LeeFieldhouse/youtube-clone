@@ -22,6 +22,80 @@ footer{
 button {
     font-family: 'Roboto', sans-serif;
 }
+
+.btn {
+    width: 10.9rem;
+    height: 4rem;
+    padding: 0.5rem 1.1rem;
+    background: none;
+    font-size: 1.4rem;
+    color: #065fd4;
+    border: 0.1rem solid #065fd4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.btn i {
+    margin-right: 1rem;
+}
+
+.form-wrapper{
+    width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.form-card {
+    width: 50%;
+    height: 50rem;
+    background-color: #ffffff;
+    border-radius: 1%;
+    border: 0.2rem solid lightgray;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form-card-heading{
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 2rem;
+    border-bottom: 0.1rem solid lightgray;
+    background-color: #fff;
+    color: #0a0a0a;
+    font-size: 2rem;
+    box-sizing: border-box;
+
+}
+
+.form-card-content{
+    width: 80%;
+    height:100%;
+    margin: 1rem auto;
+    background-color: red;
+}
+
+.form-input-section {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form-input-label{
+    color: #0a0a0a;
+    font-size: 1.5rem;
+
+}
+
 .main-section{
     margin-top: 5.6rem;
 }
@@ -109,9 +183,9 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
-
-
 }
+
+
 .top-nav-menu {
     padding: 0 1rem;
     margin-right: 1.6rem;
@@ -128,9 +202,6 @@ button {
 
 }
 
-/* end left side top nav */
-
-/* start top nav search  */
 .top-nav-search-container{
     width: 50%;
     height: 100%;
@@ -166,16 +237,15 @@ button {
 .top-nav-search-container button:hover {
     background-color: lightgray;
 }
-/* end top nav search */
 
-/* start right side top nav */
 .top-nav-right-side{
     height: 100%;
-    width: 20rem;
+    width: 35rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+
 }
 
 .top-nav-right-icon{
@@ -190,8 +260,28 @@ button {
     border-radius: 100%;
     margin-right: 0;
     padding: 0 1rem;
+    cursor: pointer;
 }
-/* end right side top nav */
+
+
+.menu-pop{
+    max-height: 100%;
+    width: 30rem;
+    margin: 1.6rem;
+    position: absolute;
+    right: 3rem;
+    top: -2rem;
+    border-radius: 2%;
+    display: none;
+}
+
+.menu-pops{
+    background: #ffffff;
+    box-shadow: 0rem 0rem 3rem 0.05rem;
+}
+
+
+
 
 /* end top nav */
 
@@ -252,6 +342,7 @@ button {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 .sidebar-heading {
@@ -448,6 +539,7 @@ video{
         height: 5rem;
         border-radius: 100%;
         margin-right: 1.5rem;
+        cursor: pointer;
     }
 
     .video-description-head-left-info div:first-of-type{
@@ -518,6 +610,7 @@ video{
         height: 4rem;
         border-radius: 100%;
         margin-right: 2rem;
+        cursor: pointer;
     }
 
     .add-comment-section{
@@ -679,6 +772,7 @@ video{
         height: 3rem;
         border-radius: 100%;
         margin-right: 2rem;
+        cursor: pointer;
     }
 
     /* end reply section */
