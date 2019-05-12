@@ -81,7 +81,7 @@ $(document).ready(()=> {
 
     // start video subscripe submit
     $('#subscribe-btn').submit(function (e) {
-        alert('yo')
+
         e.preventDefault();
         $.post(
             '{{route("subscribe", $video->user->username)}}',
@@ -145,13 +145,13 @@ $(document).ready(()=> {
 
 
     // start replies
-    // $('#reply-text').keyup(()=>{
-    //     if($('#reply-text').val() !== ''){
-    //         $('#submit-reply-button').css({background: '#065FD4'});
-    //     }else{
-    //         $('#submit-reply-button').css({background: '#cccccc'});
-    //     }
-    // })
+    $('#reply-text').keyup(()=>{
+        if($('#reply-text').val() !== ''){
+            $('#submit-reply-button').css({background: '#065FD4'});
+        }else{
+            $('#submit-reply-button').css({background: '#cccccc'});
+        }
+    })
     // show replies
     $('.show-replies').click(()=>{
         $('.view-comment-card.reply').addClass('hide');
