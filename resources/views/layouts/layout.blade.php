@@ -45,7 +45,10 @@
                     $('#upload-section').fadeToggle(500);
                 });
                 //
-
+                // end toggle upload section
+                $('#top-nav-avatar').click(()=>{
+                    $('.menu-pop').toggle();
+                })
 
             }); //end on load
         </script>
