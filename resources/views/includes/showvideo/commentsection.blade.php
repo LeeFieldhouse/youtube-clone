@@ -15,6 +15,7 @@
 
 
         {{-- start comment section --}}
+        {{$commentId = 0}}
         @foreach($video->comments->sortByDesc('created_at') as $comment)
             <div class="view-comment-card">
                 <img src="{{auth()->user()->avatar}}" class="comment-avatar" alt="" class="view-comment-avatar">
@@ -68,9 +69,9 @@
                             @auth
         <div class="add-comment-section">
             <img src="{{auth()->user()->avatar}}" alt="" class="comment-avatar">
-            <form class="submit-comment" id="submit-comment">
-                <textarea name="comment_text" id="comment-text" class="comment-text" placeholder="Add a public comment..."></textarea>
-                <button class="submit-comment-button" id="submit-comment-button" type="submit" class="">COMMENT</button>
+            <form class="submit-comment" id="submit-reply-{{$commentId}}">
+                <textarea name="comment_text" id="reply-text-{{$commentId}}" class="comment-text" placeholder="Add a public comment..."></textarea>
+                <button class="submit-comment-button" id="submit-reply-button" type="submit" class="">REPLY</button>
             </form>
         </div>
         @endauth
@@ -80,6 +81,8 @@
                 </div>
 
             </div>
+
+
 
 
         {{-- end comment section --}}
@@ -155,6 +158,7 @@
                 </div>
             </div>
             @endforeach
+            {{$commentId++}}
         {{-- end reply section --}}
         @endforeach
 
